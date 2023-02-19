@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEditor;
+using UnityEditor; // This is required to allow us to inherent from the 'Editor Class'
 
 namespace Variable
 {
-    //This allows us to edit any children under the BaseVariable Class, in this case only a single scriptable object. (need to verify)
+    //This allows us to edit any children / inherited under the BaseVariable Class, in this case only a single scriptable object. (need to verify)
     [CustomEditor(typeof(BaseVariable), true)]
     [CanEditMultipleObjects]
+                                 // using UnityEditor is required here.
     public class VariableEditor : Editor
     {
         //Have a private version of the BaseVariable Data

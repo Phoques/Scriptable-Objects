@@ -1,21 +1,39 @@
 
 using Unity.VisualScripting;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 //Family Name
 namespace Variable
 {
-                  //Generic Type        //Inheritance     // Interface
+
+
+    // The ISerializationCallbackReceiver is an interface to recieve callbacks upon serialization and deserialization.
+    //Unity's serializer is able to serialize most datatypes, but not all of them. In these cases, there are two callbacks available for you to manually process these datatypes so that
+    //Unity can serialize and deserialise them.
+    //Care needs to be taken whilst within these callbacks, as Unity's serializer runs on a different thread to most of the Unity API. It is advisable to only process fields directly owned
+    //by the object, keeping the processing burden as low as possible.
+    //Serialization can occur during all kinds of operations.For example, when using Instantiate() to clone an object, Unity serializes and deserializes the original object in order to
+    //find internal references to the original object, so that it can replace them with references to the cloned object. In this situation, you can also employ the callbacks to update any
+    //internal references using types that Unity can't serialize.
+    //The callback interface only works with classes.It does not work with structs.
+    
+    
+                //Generic Type <T> is the generic type       //Inheritance     // Interface
     public class GenericVariable <T> : BaseVariable, ISerializationCallbackReceiver
     {
         public enum RunTimeMode { ReadOnly,ReadWrite}
         public enum PersistenceMode { None,Persist} // None = 0, Persist = 1 like how Enums work
 
+        //Changed these to public to allow it to be used in the Timer Scriptable object
+        [SerializeField] public T _initialValue;
+        [SerializeField] public T _runtimeValue;
+
+
         [SerializeField] private RunTimeMode _runtimeMode;
         [SerializeField] private PersistenceMode _persistenceMode;
-        [SerializeField] private T _initialValue;
-        [SerializeField] private T _runtimeValue;
 
-        // => is the Lambda expression when used below, it allows us to apply functionalist and pass it back to our variable
+
+        // => is the Lambda expression when used below, it allows us to apply functionalism and pass it back to our variable
 
         // persistance is set to true, if persistenceMode is == the Enum Persist;
         private bool _persistence => _persistenceMode == PersistenceMode.Persist;
@@ -61,8 +79,11 @@ namespace Variable
             }
         }
 
-        //public is an accessor, static is a, implicit is a, operator is
-        public static implicit operator T (GenericVariable<T> variable)
+        //public is an accessor, static belongs to the class not the object, implicit operator is:
+        // Implicit operators convert automatically when required, Implicit must always be static
+        //Implicit seems to convert something?? When something cannot be implicitly converted (Check with Jaymie)
+
+        public static implicit operator T(GenericVariable<T> variable)
         {
             return variable.Value;
         }
