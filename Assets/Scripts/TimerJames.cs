@@ -8,17 +8,32 @@ public class TimerJames : MonoBehaviour
 
     // Using the Float Scriptable object we created.
     public Float timerFloat;
+	public bool isCountdown;
 
     private void Start()
     {
-        timerFloat._initialValue = 0f;
+		
+       //timerFloat.RuntimeMode = timerFloat.InitialValue;
         
 
     }
 
     private void Update()
     {
-        timerFloat._runtimeValue += Time.deltaTime;
+		
+		if(isCountdown)
+		{
+			if(timerFloat.Value > 0)
+			{
+				timerFloat.Value -= Time.deltaTime;
+			}
+			else
+			{
+				timerFloat.Value += Time.deltaTime;
+			}
+		}
+		
+        //timerFloat._runtimeValue += Time.deltaTime;
     }
 
 }
