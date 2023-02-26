@@ -9,8 +9,10 @@ namespace Event
 	[CreateAssetMenu(menuName = "Events/Input Action Event", fileName = "New Input Action Event")]
 	public class InputAction : ScriptableObject
 	{
+
+
 		//This is putting a tooltip on the 'input' variable that shows up in the inspector when you mouse over the 'input' variable.
-		[SerializeField, Tooltip("In this slot you need to attach and Input Action Reference from the newInput Systems, 'Input Actions' \n p.s you can make more of these, right click in Assets to make an Input Action")]
+		[SerializeField, Tooltip("In this slot you need to attach an Input Action Reference from the newInput Systems, 'Input Actions' \n p.s you can make more of these, right click in Assets to make an Input Action")]
 		private InputActionReference _input;
 		
 		//This spaces out how far it sits in the inspector and adding a header (Quite cool!)

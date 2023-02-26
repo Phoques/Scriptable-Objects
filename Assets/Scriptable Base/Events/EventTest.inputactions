@@ -1,0 +1,34 @@
+{
+    "name": "EventTest",
+    "maps": [
+        {
+            "name": "Test",
+            "id": "d075caaf-2fc6-4ad1-973a-c3af07f1bf07",
+            "actions": [
+                {
+                    "name": "Test Click",
+                    "type": "Button",
+                    "id": "15992580-5312-47b2-b94f-7d92903ea4b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f9dc887-e055-4407-8eb8-3bbafb1d2569",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

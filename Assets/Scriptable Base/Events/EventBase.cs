@@ -1,3 +1,6 @@
+using System;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,10 +15,14 @@ namespace Event
 		public void Invoke(T context) => _eventResponses?.Invoke(context);
 		public void Add(UnityAction <T> action) => _eventResponses.AddListener(action);
 		public void Remove(UnityAction <T> action) => _eventResponses.RemoveListener(action);
-		
-   
-   
-	}
+
+
+
+        
+
+
+
+    }
 	
 }
 
